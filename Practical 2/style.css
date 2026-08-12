@@ -1,0 +1,251 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	color-scheme: light;
+	--bg: #f4f7fb;
+	--surface: rgba(255, 255, 255, 0.82);
+	--surface-solid: #ffffff;
+	--text: #172033;
+	--muted: #667085;
+	--border: rgba(23, 32, 51, 0.12);
+	--primary: #116d6e;
+	--primary-dark: #0d5253;
+	--primary-soft: rgba(17, 109, 110, 0.12);
+	--shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+	--radius-xl: 28px;
+	--radius-lg: 18px;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: Inter, "Segoe UI", Arial, sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at top left, rgba(17, 109, 110, 0.18), transparent 34%),
+		radial-gradient(circle at bottom right, rgba(79, 122, 255, 0.12), transparent 30%),
+		linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+}
+
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+	background-size: 48px 48px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 80%);
+	opacity: 0.35;
+}
+
+.page-shell {
+	width: min(1120px, calc(100% - 32px));
+	margin: 0 auto;
+	padding: 40px 0;
+	display: grid;
+	gap: 24px;
+}
+
+.hero-panel,
+.form-card {
+	border: 1px solid var(--border);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	box-shadow: var(--shadow);
+}
+
+.hero-panel {
+	padding: 32px;
+	border-radius: var(--radius-xl);
+	background: linear-gradient(135deg, rgba(17, 109, 110, 0.12), rgba(255, 255, 255, 0.78));
+}
+
+.eyebrow {
+	margin: 0 0 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: var(--primary-dark);
+}
+
+.hero-panel h1,
+.card-header h2 {
+	margin: 0;
+	line-height: 1.1;
+}
+
+.hero-panel h1 {
+	font-size: clamp(2.2rem, 4vw, 4rem);
+	max-width: 12ch;
+}
+
+.hero-copy,
+.card-header p {
+	margin: 12px 0 0;
+	color: var(--muted);
+	max-width: 62ch;
+}
+
+.form-card {
+	background: var(--surface);
+	border-radius: var(--radius-xl);
+	overflow: hidden;
+}
+
+.card-header {
+	padding: 28px 28px 0;
+}
+
+.entry-form {
+	padding: 28px;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.full-width {
+	grid-column: 1 / -1;
+}
+
+label {
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: #243042;
+}
+
+input,
+select,
+textarea {
+	width: 100%;
+	border: 1px solid rgba(23, 32, 51, 0.15);
+	border-radius: 16px;
+	background: var(--surface-solid);
+	color: var(--text);
+	font: inherit;
+	padding: 14px 16px;
+	outline: none;
+	transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+textarea {
+	resize: vertical;
+	min-height: 120px;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: #98a2b3;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	border-color: rgba(17, 109, 110, 0.55);
+	box-shadow: 0 0 0 4px var(--primary-soft);
+}
+
+input[type="file"] {
+	padding: 12px;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.chips label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 14px;
+	border-radius: 999px;
+	border: 1px solid rgba(17, 109, 110, 0.14);
+	background: rgba(17, 109, 110, 0.06);
+	font-weight: 500;
+	color: #2b3a4f;
+}
+
+.chips input {
+	width: auto;
+	margin: 0;
+	accent-color: var(--primary);
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.btn {
+	border: 0;
+	border-radius: 999px;
+	padding: 13px 22px;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.btn:hover {
+	transform: translateY(-1px);
+}
+
+.btn-primary {
+	color: #fff;
+	background: linear-gradient(135deg, var(--primary), #118b87);
+	box-shadow: 0 12px 26px rgba(17, 109, 110, 0.28);
+}
+
+.btn-primary:hover {
+	background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+}
+
+.btn-secondary {
+	color: #344054;
+	background: #eef2f7;
+}
+
+@media (max-width: 760px) {
+	.page-shell {
+		width: min(100% - 20px, 1120px);
+		padding: 20px 0;
+	}
+
+	.hero-panel,
+	.entry-form,
+	.card-header {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.form-actions {
+		flex-direction: column-reverse;
+	}
+
+	.btn {
+		width: 100%;
+	}
+}
